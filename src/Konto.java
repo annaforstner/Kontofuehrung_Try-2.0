@@ -1,20 +1,21 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public abstract class Konto {
     private String kontoinhaber;
     private int bankleitzahl;
-    private String kontonummer;
+    private int kontonummer;
     private double ueberziehungsrahmen;
     private double kontofuehrung;
     private double kontostand;
     private String kontoart;
 
-    private static ArrayList<Konto> kontos = new ArrayList<>();
+    static ArrayList<Konto> kontos = new ArrayList<>();
     Scanner scan = new Scanner(System.in);
 
     // Konstruktor
-    public Konto(String kontoinhaber, int bankleitzahl, String kontonummer, double ueberziehungsrahmen, double kontofuehrung, double kontostand, String kontoart) {
+    public Konto(String kontoinhaber, int bankleitzahl, int kontonummer, double ueberziehungsrahmen, double kontofuehrung, double kontostand, String kontoart) {
         this.kontoinhaber = kontoinhaber;
         this.bankleitzahl = bankleitzahl;
         this.kontonummer = kontonummer;
@@ -29,7 +30,7 @@ public abstract class Konto {
         int zahl = 1;
         for (int i = 0; i < kontos.size(); i++){
             Konto k = kontos.get(i);
-            System.out.printf("%d | Kontoinhaber: %-20s | Kontonummer: %-10s | Kontostand: %-10.2f | Kontoart: %-20s\n", zahl, k.getKontoinhaber(), k.getKontonummer(), k.getKontostand(), k.getKontoart());
+            System.out.printf("%d | Kontoinhaber: %-15s | Kontonummer: %-10s | Kontostand: € %-10.2f | Kontoart: %s\n", zahl, k.getKontoinhaber(), k.getKontonummer(), k.getKontostand(), k.getKontoart());
             zahl++;
         }
     }
@@ -45,21 +46,14 @@ public abstract class Konto {
         int auszug = scan.nextInt();
         scan.nextLine();
         Konto k = kontos.get(auszug-1);
-        int a = 12;
+
         System.out.println("Kontoauszug");
-        for(int j = 0; j < a; j++) {
-            System.out.println(" * *");
-        }
+        System.out.println("----------------------------------------");
         System.out.println("Kontoinhaber: "+k.getKontoinhaber());
         System.out.println("Kontonummer: "+k.getKontonummer());
-        for(int j = 0; j < a; j++) {
-            System.out.println(" * *");
-        }
-        System.out.println("Kontostand: "+k.getKontostand());
-        for(int j = 0; j < a; j++) {
-            System.out.println(" * *");
-        }
-
+        System.out.println("----------------------------------------");
+        System.out.println("Kontostand: "+k.getKontostand()+ "€");
+        System.out.println("========================================");
     }
 
     // Getter und Setter
@@ -79,11 +73,11 @@ public abstract class Konto {
         this.bankleitzahl = bankleitzahl;
     }
 
-    public String getKontonummer() {
+    public int getKontonummer() {
         return kontonummer;
     }
 
-    public void setKontonummer(String kontonummer) {
+    public void setKontonummer(int kontonummer) {
         this.kontonummer = kontonummer;
     }
 
@@ -119,7 +113,7 @@ public abstract class Konto {
         this.kontoart = kontoart;
     }
 
-    public static ArrayList<Konto> getKontos() {
+    public static ArrayList<Konto> getKontos(){
         return kontos;
     }
 
