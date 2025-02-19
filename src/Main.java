@@ -1,16 +1,31 @@
 public class Main {
     public static void main(String[] args) {
-        Giro g = new Giro("Anna Forstner", 1234, 67875, 200.00, 3.34, 45.67, "Giro");
-        Giro g1 = new Giro("Mark Pock", 7896, 87546, 2000.00, 1.89, 13500.00, "Giro");
+        Konto g = new Konto("Anna Forstner", 1234, 13099, 200.00, 3.34, 6.27, "Giro");
+        Giro g1 = new Giro("Mark Pock", 7896, 20188, 20000.00, 1.89, 13500.00, "Giro");
         Giro g2 = new Giro("Hermine Karner", 3224, 23456, 500.00,2.45, 5604.78, "Giro" );
+
+        Kredit k = new Kredit("Marnie Blaise", 1247, 35578, 0.00, 3.05, -4500.78, "Kredit");
+        Kredit k1 = new Kredit("Bernd Vihnanek", 3469, 43578, 0.00,2.85, -5890.99, "Kredit" );
+        Kredit k2 = new Kredit("Shirley McAfton", 9517, 57327, 0.00,0.89,-100000, "Kredit");
+
+        Spar s = new Spar("Gerhard Saul", 2478, 56780, 0.00,0.158,524.32, "Sparen");
+        Spar s1 = new Spar("Marvin Klein", 1835, 73361, 0.00,0.52, 500.00,"Sparen" );
+        Spar s2 = new Spar("Sara Mila", 1834, 61214, 0.00,0.05,2500.00,"Sparen");
+
+
 
         Konto.kontos.add(g);
         Konto.kontos.add(g1);
         Konto.kontos.add(g2);
+        Konto.kontos.add(k);
+        Konto.kontos.add(k1);
+        Konto.kontos.add(k2);
+        Konto.kontos.add(s);
+        Konto.kontos.add(s1);
+        Konto.kontos.add(s2);
 
-        g.kontoAnlegen();
-        g.kontoLoeschen();
 
-
+       k.beheben();
+       
     }
 }
