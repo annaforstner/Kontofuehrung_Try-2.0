@@ -5,6 +5,10 @@ public class Spar extends Konto{
     public Spar(String kontoinhaber, int bankleitzahl, int kontonummer, double ueberziehungsrahmen, double kontofuehrung, double kontostand, String kontoart) {
         super(kontoinhaber, bankleitzahl, kontonummer, ueberziehungsrahmen, kontofuehrung, kontostand, kontoart);
     }
+
+    public Spar() {
+    }
+
     Random randomNumbers = new Random();
 
 
@@ -26,11 +30,7 @@ public class Spar extends Konto{
     }
 
 
-    public void kontoLoeschen() {
-        anzeigen();
-        System.out.println("Welches dieser Konten soll gelöscht werden? Bitte wählen Sie eine Zahl.");
-        int weg = scan.nextInt();
-        scan.nextLine();
+    public void kontoLoeschen(int weg) {
         Konto k = kontos.get(weg -1);
         double wert = k.getKontostand();
         kontos.remove(weg-1);
@@ -56,12 +56,8 @@ public class Spar extends Konto{
     }
 
 
-    public void ueberweisen(){
-        anzeigen();
-        System.out.println("Bitte wählen Sie ein Konto von dem Geld abgehoben werden soll.");
-        int zahl = scan.nextInt();
-        scan.nextLine();
-        Konto k = kontos.get(zahl -1);
+    public void ueberweisen(int index){
+        Konto k = kontos.get(index -1);
         System.out.printf("Folgendes Konto wurde ausgewählt: %-20s | %-6.2f€ |  Kontonummer: %-6s | %-10s\n",k.getKontoinhaber(), k.getKontostand(), k.getKontonummer(), k.getKontoart());
         System.out.println("Wie viel soll ausgezahlt werden?");
         double raus = scan.nextDouble();

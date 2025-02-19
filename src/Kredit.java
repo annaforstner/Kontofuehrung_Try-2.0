@@ -4,6 +4,10 @@ public class Kredit extends Konto{
     public Kredit(String kontoinhaber, int bankleitzahl, int kontonummer, double ueberziehungsrahmen, double kontofuehrung, double kontostand, String kontoart) {
         super(kontoinhaber, bankleitzahl, kontonummer, ueberziehungsrahmen, kontofuehrung, kontostand, kontoart);
     }
+
+    public Kredit() {
+    }
+
     Random randomNumbers = new Random();
 
     public void kontoAnlegen() {
@@ -21,13 +25,10 @@ public class Kredit extends Konto{
         int kn = randomNumbers.nextInt(100000);
         Kredit kredit = new Kredit(name, blz, kn, drueber, fuehrung, -geld, art);
         Konto.kontos.add(kredit);
+        System.out.println("Das Konto wurde erstellt.");
     }
 
-    public void kontoLoeschen() {
-        anzeigen();
-        System.out.println("Welches Kreditkonto soll gelöscht werden?");
-        int weg = scan.nextInt();
-        scan.nextLine();
+    public void kontoLoeschen(int weg) {
         Konto k = kontos.get(weg -1);
         double wert = k.getKontostand();
 
@@ -59,12 +60,8 @@ public class Kredit extends Konto{
         }
     }
 
-    public void ueberweisen(){
-        anzeigen();
-        System.out.println("Bitte wählen Sie ein Konto, von dem Geld überwiesen werden soll.");
-        int zahl = scan.nextInt();
-        scan.nextLine();
-        Konto k = kontos.get(zahl -1);
+    public void ueberweisen(int index){
+        Konto k = kontos.get(index -1);
         System.out.printf("Folgendes Konto wurde ausgewählt: %-20s | %-6.2f€ |  Kontonummer: %-6s | %-10s\n",k.getKontoinhaber(), k.getKontostand(), k.getKontonummer(), k.getKontoart());
         System.out.println("Wie viel soll ausgezahlt werden?");
         double raus = scan.nextDouble();

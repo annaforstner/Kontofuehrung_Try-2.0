@@ -1,8 +1,7 @@
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-public class Konto {
+public class Konto { // Anforderungen an das Konto
     private String kontoinhaber;
     private int bankleitzahl;
     private int kontonummer;
@@ -25,30 +24,35 @@ public class Konto {
         this.kontoart = kontoart;
     }
 
+    public Konto() {
+    }
+
     // den hier werden wir einige Male brauchen
-    public void anzeigen(){
+    public void anzeigen(){ // damit wir uns den Code bei jeder Anwendung sparen können
         System.out.println();
         int zahl = 1;
         for (int i = 0; i < kontos.size(); i++){
             Konto k = kontos.get(i);
-            System.out.printf("%d | Kontoinhaber: %-15s | Kontonummer: %-8s | %-10s: € %12.2f | Kontoart: %s\n", zahl, k.getKontoinhaber(), k.getKontonummer(),"Kontostand",  k.getKontostand(), k.getKontoart());
+            System.out.printf("%2d | Kontoinhaber: %-20s | Kontonummer: %-8s | %-10s: € %12.2f | Kontoart: %s\n", zahl, k.getKontoinhaber(), k.getKontonummer(),"Kontostand",  k.getKontostand(), k.getKontoart());
             zahl++;
         }
     }
 
     public void einzahlen(){
-        anzeigen();
+        anzeigen(); // see?
+        // wir suchen uns ein Konto aus
         System.out.println("Auf welches Konto soll etwas eingezahlt werden?");
         int zahl = scan.nextInt();
         scan.nextLine();
-
         Konto k = kontos.get(zahl - 1);
         System.out.printf("Folgendes Konto wurde ausgewählt: %-20s | %-6.2f€ |  Kontonummer: %-6s | %-10s\n",k.getKontoinhaber(), k.getKontostand(), k.getKontonummer(), k.getKontoart());
+        // wie viel Geld soll eingezahlt werden
         System.out.println("Wie viel Geld soll darauf eingezahlt werden?");
         double hinein = scan.nextDouble();
         scan.nextLine();
         double geld = k.getKontostand();
         double neuerKontostand = hinein + geld;
+        // wenn das Kreditkonto auf über 0,00€ ausgezahlt wurde, dann schließen wir es
         String art = getKontoart();
         if(art == "Kredit" && neuerKontostand > 0) {
             System.out.println("Der Kredit wurde abbezahlt. Danke für die Spende.");
@@ -59,7 +63,7 @@ public class Konto {
         System.out.printf("Der neue Kontostand beträgt %.2f€.\n", k.getKontostand());
     }
 
-    public void beheben(){
+    public void beheben(){ // wie viel Geld soll behoben werden
         System.out.println("Von welchem Konto soll behoben werden?");
         anzeigen();
         System.out.println("Wählen Sie eine Zahl: ");
@@ -70,7 +74,7 @@ public class Konto {
         double raus = scan.nextDouble();
         double geld = k.getKontostand();
         double neuerKontostand = geld - raus;
-        System.out.println(neuerKontostand);
+        // Ausnahmefälle beim Abheben
         String art = getKontoart();
         if(art == "Giro"){
             if( neuerKontostand < -k.getUeberziehungsrahmen()){
@@ -99,7 +103,7 @@ public class Konto {
         }
     }
 
-    public void kontoAuszug(){
+    public void kontoAuszug(){ // zeigt Informationen zum Konto an
         System.out.println("Von welchem Konto hätten Sie gerne einen Kontoauszug?");
         anzeigen();
         int auszug = scan.nextInt();
@@ -115,7 +119,7 @@ public class Konto {
         System.out.println("========================================");
     }
 
-    // Getter und Setter
+    // Getter und Setter (interessanter wirds nimmer)
     public String getKontoinhaber() {
         return kontoinhaber;
     }
