@@ -31,7 +31,7 @@ public class Konto { // Anforderungen an das Konto
     // den hier werden wir einige Male brauchen
     public void anzeigen(){ // damit wir uns den Code bei jeder Anwendung sparen können
         System.out.println();
-        if (kontos.isEmpty(){
+        if (kontos.isEmpty()){
             System.out.println("Keine Konten vorhanden.");
             return;
         }
