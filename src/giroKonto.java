@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class giroKonto extends JFrame{
+public class giroKonto extends JDialog{
     private JPanel giroPanel;
     private JLabel begruessung;
     private JLabel fullnameText;
@@ -8,12 +8,13 @@ public class giroKonto extends JFrame{
     private JLabel money;
     private JTextField startkapital;
     private JButton speichernButton;
+    private JLabel begruessung2;
 
-    
+
     public giroKonto(){
         setContentPane((giroPanel));
         pack();
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 

@@ -115,7 +115,7 @@ public class Main {
                     k.anzeigen();
                     break;
                 default:
-                    System.out.println("Irgendetwas ist schiefgelaufen. Bitte überprüfen Sie die eingabe oder starten Sie das Programm erneut.");
+                    System.out.println("Irgendetwas ist schiefgelaufen. Bitte überprüfen Sie die Eingabe oder starten Sie das Programm erneut.");
                     break;
             }
         }

@@ -11,7 +11,7 @@ public class btnKontoErstellen extends JDialog{
     public btnKontoErstellen(){
         setContentPane((btnPanel));
         pack();
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         setVisible(true);
 
         girokontoButton.addActionListener(new ActionListener() {
@@ -23,13 +23,13 @@ public class btnKontoErstellen extends JDialog{
         kreditkontoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                new kreditKonto();
             }
         });
         sparkontoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                new sparKonto();
             }
         });
     }

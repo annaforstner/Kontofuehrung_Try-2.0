@@ -17,12 +17,50 @@ public class mainFrame extends JFrame{
         pack();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
+        setLocationRelativeTo(null);
+
 
 
         kontoErstellenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new btnKontoErstellen();
+            }
+        });
+        alleAnzeigenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new kontoAnzeigen();
+            }
+        });
+        kontoauszugButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new kontoAuszug();
+            }
+        });
+        kontoLöschenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new kontoEinzahlen();
+            }
+        });
+        auszahlenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new kontoAuszahlen();
+            }
+        });
+        einzahlenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new kontoEinzahlen();
+            }
+        });
+        überweisenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new kontoUeberweisen();
             }
         });
     }
