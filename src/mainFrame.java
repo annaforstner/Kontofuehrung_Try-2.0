@@ -22,7 +22,7 @@ public class mainFrame extends JFrame{
         Kredit k1 = new Kredit("Bernd Vihnanek", 3469, 43578, 0.00,2.85, -5890.99, "Kredit" );
         Kredit k2 = new Kredit("Shirley McAfton", 9517, 57327, 0.00,0.89,-100000, "Kredit");
 
-        Spar s = new Spar("Gerhard Saul", 2478, 56780, 0.00,0.158,524.32, "Sparen");
+        Spar s = new Spar("Gerhard Jakob", 2478, 56780, 0.00,0.158,524.32, "Sparen");
         Spar s1 = new Spar("Marvin Klein", 1835, 73361, 0.00,0.52, 500.00,"Sparen" );
         Spar s2 = new Spar("Sara Mila", 1834, 61214, 0.00,0.05,2500.00,"Sparen");
 

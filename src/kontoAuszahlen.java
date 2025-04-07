@@ -3,6 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import static java.lang.Double.parseDouble;
+
 public class kontoAuszahlen extends JDialog{
     private JPanel auszahlenPanel;
     private JLabel ausText;
@@ -12,6 +14,7 @@ public class kontoAuszahlen extends JDialog{
     private JTextField kontostand;
     private JTextField inhaber;
     private JLabel label;
+    private JButton auszahlenButton;
 
     public kontoAuszahlen() {
         setTitle("Geld beheben");
@@ -32,10 +35,25 @@ public class kontoAuszahlen extends JDialog{
             }
         });
 
+        // das Geld wird vom Konto abgezogen (nimmt dabei im Moment keine Rücksicht auf Kontoart oder Überziehung)
+        auszahlenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Double geld = parseDouble(kontostand.getText());
+                Double minus = parseDouble(textField1.getText());
+                Double ergebnis = geld - minus;
+                for (Konto k : Konto.kontos){
+                    k.setKontostand(ergebnis);
+                    JOptionPane.showMessageDialog(null, "Neuer Kontostand: "+ergebnis);
+                    return;
+                }
+            }
+        });
         setContentPane(auszahlenPanel);
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
+
     }
 
     public void anzeigen(String kontoNr) {
@@ -43,7 +61,7 @@ public class kontoAuszahlen extends JDialog{
             String kNr = String.valueOf(konto.getKontonummer());
             if (kNr.equals(kontoNr)) {
                 inhaber.setText(konto.getKontoinhaber());
-                kontostand.setText(konto.getKontostand() + "€");
+                kontostand.setText(String.valueOf(konto.getKontostand()));
                 return;
             }
         }

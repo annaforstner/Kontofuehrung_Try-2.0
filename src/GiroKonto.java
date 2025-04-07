@@ -34,7 +34,7 @@ public class GiroKonto extends JDialog {
             double drueber = 2000.00;
             double fuehrung = randomNumbers.nextDouble() * 100; // Zufällige Kontoführungsgebühr
             String art = "Giro";
-            int kn = randomNumbers.nextInt(100000);
+            int kn = randomNumbers.nextInt(5, 100000);
 
             Giro g = new Giro(name, blz, kn, drueber, fuehrung, geld, art);
             Konto.kontos.add(g);
